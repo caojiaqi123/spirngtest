@@ -3,6 +3,8 @@ package com.smart.beanfactory;
 import com.smart.context.MyBeanPostProcessor;
 import com.smart.context.MyInstantiationAwareBeanPostProcessor;
 import com.smart.model.Car;
+import com.smart.model.Foo;
+import com.smart.model.People;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
@@ -38,6 +40,10 @@ public class BeanLifeCycle {
         //6 两者相等
         System.out.println("car1 == car2:" + (car == car2));
 
+        Foo foo = (Foo) bf.getBean("foo");
+
+        People p1 = (People) bf.getBean("p");
+        //System.out.println(foo.getIdCode());
         //7关闭容器
         ((DefaultListableBeanFactory) bf).destroySingletons();
     }

@@ -24,5 +24,6 @@ public class Index {
     public void index2(HttpServletRequest request) {
         Car car = loginService.getCar();
          car.introduce();
+
     }
 }

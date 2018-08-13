@@ -2,8 +2,26 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="car" class="com.smart.model.Car"
+    <bean id="car2" class="com.smart.model.Car"
           p:brand="红旗" p:color="红色" p:maxSpeed="300" init-method="myInit" destroy-method="myDestory"></bean>
     <bean id="mybeanPro" class="com.smart.context.MyInstantiationAwareBeanPostProcessor"></bean>
     <bean id="test" class="com.smart.context.MyBeanFactoryPostProcessor"></bean>
+    <bean id="foo" class="com.smart.model.Foo">
+        <property name="idCode" value="000012"></property>
+    </bean>
+    <bean id="p" class="com.smart.model.People">
+        <constructor-arg type="java.lang.String" value="曹嘉琦"/>
+        <constructor-arg type="double" value="100000.0"/>
+    </bean>
+
+    <bean id="car" class="com.smart.model.dirtype.Car"
+          p:brand="红旗CA72"
+          p:maxSpeed="200"
+          p:price="20000.00"/>
+
+    <!--工厂类bean-->
+    <bean id="carFactory" class="com.smart.model.dirtype.CarFactory"></bean>
+    <!--指定相关的方法-->
+    <bean id="car5" factory-bean="carFactory" factory-method="createHongQi"></bean>
+    <bean id="car6" class="com.smart.model.dirtype.CarFactory" factory-method="createCar"></bean>
 </beans>
